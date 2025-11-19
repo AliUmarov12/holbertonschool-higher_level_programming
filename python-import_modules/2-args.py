@@ -7,4 +7,4 @@ if __name__ == "__main__":
     else:
         print("{} arguments:".format(a))
     for i in range(a):
-        print("{}: {}".format(i+1, a+1)
+        print("{}: {}".format(i+1, a+1))
