@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from sys import argv
 a = len(argv) - 1
 if  a == 1:
