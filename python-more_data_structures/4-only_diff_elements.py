@@ -5,9 +5,9 @@ def only_diff_elements(set_1, set_2):
         for k in set_2:
             if i == k:
                 a += [k]
-    c = []
-    for i in list(set_1) + list(set_2):
-        for k in a:
-            if i != k:
-                c += [i]
-    return set(c)
+    set11 = list(set(list(set_1) + list(set_2)))
+    f = []
+    for j in set11:
+        if a.count(j) == 0:
+            f += [j]
+    return set(f)
