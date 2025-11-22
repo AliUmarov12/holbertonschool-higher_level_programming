@@ -4,4 +4,4 @@ def square_matrix_simple(matrix):
     for i in new_matrix:
         for k in range(len(i)):
             i[k] **= 2
-    return new_matrix
+    return new_matrix, matrix
