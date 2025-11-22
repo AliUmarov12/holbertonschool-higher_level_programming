@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 def best_score(a_dictionary):
-    if type(a_dictionary) == None:
+    if str(type(a_dictionary)) == str(None):
         return None
     else:
         a = []
