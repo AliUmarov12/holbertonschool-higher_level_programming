@@ -1,17 +1,17 @@
 #!/usr/bin/python3
-"""Defines a Rectangle class """
+"""Defines a Rectangle class with width, height, area, perimeter, printing, repr, and instance counter."""
 
 
 class Rectangle:
     """Class that defines a rectangle by width and height."""
 
-    Rectangle.number_of_instances = 0
+    number_of_instances = 0  # Public class attribute
 
     def __init__(self, width=0, height=0):
         """Instantiation with optional width and height."""
         self.width = width
         self.height = height
-        Rectangle.number_of_instances += 1
+        Rectangle.number_of_instances += 1  # Increment class counter
 
     @property
     def width(self):
@@ -63,6 +63,7 @@ class Rectangle:
         return f"Rectangle({self.__width}, {self.__height})"
 
     def __del__(self):
-        """Return a string"""
+        """Print a message when the instance is deleted and decrement counter."""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
+
