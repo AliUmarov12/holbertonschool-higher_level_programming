@@ -56,7 +56,7 @@ class Rectangle:
         """Return a string representation of the rectangle using '#'."""
         if self.__width == 0 or self.__height == 0:
             return ""
-        smb = str(self.print_symbol)
+        symbol = str(self.print_symbol)
         lines = ['#' * self.__width for _ in range(self.__height)]
         return "\n".join(lines)
 
