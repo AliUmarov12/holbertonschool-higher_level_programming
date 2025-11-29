@@ -1,4 +1,4 @@
 #!/usr/bin/python3
 class Rectangle:
-    """dsjcns"""
+    """This class defines a rectangle."""
     pass
