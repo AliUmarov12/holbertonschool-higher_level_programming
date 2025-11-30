@@ -1,19 +1,21 @@
 #!/usr/bin/python3
-"""kjdfbjbdfjeh"""
+"""Defines a Square class that inherits from Rectangle"""
+
 Rectangle = __import__('9-rectangle').Rectangle
 
 
 class Square(Rectangle):
-    """kldfnv"""
+    """Square that inherits from Rectangle"""
 
     def __init__(self, size):
-        """kdfvfinvirj"""
-        self.integer_validator('size', size) 
+        """Initialize square with validated size"""
+        # size müsbət tam olmalıdır — Rectangle-in parent classı BaseGeometry yoxlayır
+        self.integer_validator("size", size)
         self.__size = size
 
-        """sdklnkrnvkr"""
+        # Rectangle konstruktorunu width və height eyni olaraq çağırırıq
         super().__init__(size, size)
 
-    def area():
-        """lkjnrfrntj"""
+    def area(self):
+        """Return area of the square"""
         return self.__size * self.__size
