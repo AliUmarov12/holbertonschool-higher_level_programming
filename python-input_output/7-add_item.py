@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This script adds all command line arguments to a list and saves them to a JSON file.
+ekfkjrfrgkigmkgmk
 """
 import sys
 from pathlib import Path
