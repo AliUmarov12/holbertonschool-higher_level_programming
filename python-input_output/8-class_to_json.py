@@ -7,8 +7,11 @@ with only simple data structures for JSON serialization.
 
 def class_to_json(obj):
     """
-    Returns a dictionary representation of obj suitable for JSON serialization.
-    Only includes simple attributes: list, dict, str, int, bool
+    Returns a dictionary 
     """
     simple_types = (list, dict, str, int, bool)
-    return {k: v for k, v in obj.__dict__.items() if isinstance(v, simple_types)}
+    return {
+        k: v
+        for k, v in obj.__dict__.items()
+        if isinstance(v, simple_types)
+    }
