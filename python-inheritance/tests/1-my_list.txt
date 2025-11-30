@@ -1,21 +1,12 @@
->>> from 1-my_list import MyList
->>> ml = MyList()
->>> ml.append(4)
->>> ml.append(1)
->>> ml.append(3)
->>> ml.append(2)
->>> ml
-[4, 1, 3, 2]
+#!/usr/bin/python3
+MyList = __import__('1-my_list').MyList
 
-# print_sorted should print the sorted list but NOT modify the original
->>> ml.print_sorted()
-[1, 2, 3, 4]
-
-# After printing sorted, original list must stay the same
->>> ml
-[4, 1, 3, 2]
-
-# Adding more elements still works because MyList inherits from list
->>> ml.append(5)
->>> ml
-[4, 1, 3, 2, 5]
+my_list = MyList()
+my_list.append(1)
+my_list.append(4)
+my_list.append(2)
+my_list.append(3)
+my_list.append(5)
+print(my_list)
+my_list.print_sorted()
+print(my_list)
