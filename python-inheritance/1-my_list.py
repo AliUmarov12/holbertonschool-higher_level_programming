@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """kjsdnjb"""
 
-class MyList:
+class MyList(list):
     """jnvjrv"""
 
     def print_sorted(self):
