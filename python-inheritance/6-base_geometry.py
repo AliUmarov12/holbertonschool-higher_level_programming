@@ -2,6 +2,9 @@
 """skdnjnvjnv"""
 
 
-def area(self):
-    """jkernjebrjk"""
-    raise Exception("area() is not implemented")
+class BaseGeometry:
+    """kernejnr"""
+
+    def area(self):
+        """jkernjebrjk"""
+        raise Exception("area() is not implemented")
