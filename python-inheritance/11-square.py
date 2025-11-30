@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """fbhjbrhbv"""
-Recatangle = __import__('9-rectangle').Rectangle
+Rectangle = __import__('9-rectangle').Rectangle
 
 
 class Square(Rectangle):
