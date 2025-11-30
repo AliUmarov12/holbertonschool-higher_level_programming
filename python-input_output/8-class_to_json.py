@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 """
-Function 
+Function that returns the dictionary description of a class instance
+with only simple data structures for JSON serialization.
 """
 
 
 def class_to_json(obj):
     """
-    ksdnfkjnfjnrjnfr
+    Returns a dictionary representation of obj suitable for JSON serialization.
+    Only includes simple attributes: list, dict, str, int, bool
     """
-    # __dict__ bütün instance atributlarını verir
     simple_types = (list, dict, str, int, bool)
     return {k: v for k, v in obj.__dict__.items() if isinstance(v, simple_types)}
