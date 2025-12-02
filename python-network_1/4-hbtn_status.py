@@ -10,4 +10,4 @@ if __name__ == "__main__":
 
     print("Body response:")
     print("\t- type: {}".format(type('s')))
-    print("\t- content: {}".format(req))
+    print("\t- content: {}".format(req.text))
