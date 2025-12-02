@@ -8,7 +8,8 @@ if __name__ == "__main__":
     url = sys.argv[1]
 
     req = requests.get(url)
-    try:
+    a = req.status_code
+    if a >= 400:
+        print("Error code:", a)
+    else:
         print(req.text)
-    except requests.error.HTTPError as g:
-        print("Error code:", g.code)
