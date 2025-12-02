@@ -9,5 +9,5 @@ if __name__ == "__main__":
     req = requests.get(url, headers={'cfclearance': 'true'})
 
     print("Body response:")
-    print("    - type: {}".format(type(req)))
-    print("    - content: {}".format(req))
+    print("\t- type: {}".format(type(req)))
+    print("\t- content: {}".format(req))
