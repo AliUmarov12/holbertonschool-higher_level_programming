@@ -8,7 +8,7 @@ import sys
 if __name__ == "__main__":
     url = sys.argv[1]
 
-    request = urllib.request.Request(url)
+    request = urllib.request.Request(url, headers={'cfclearance': 'true'})
 
     try:
         with urllib.request.urlopen(url) as f:
