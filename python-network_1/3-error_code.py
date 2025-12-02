@@ -5,7 +5,7 @@ import urllib.request
 import urllib.error
 import sys
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     url = sys.argv[1]
 
     request = urllib.request.Request(url, headers={'cfclearance': 'true'})
