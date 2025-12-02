@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """dlmfkmkv"""
 
+'cfclearance': 'true'
 import urllib.request
 
 if __name__ == "__main__":
