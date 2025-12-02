@@ -9,7 +9,7 @@ if __name__ == "__main__":
 
     req = requests.get(url)
     try:
-        print(req.decode("utf-8"))
+        print(req.text)
     except requests.error.HTTPError as g:
         if g.code >= 400:
             print("Error code:", g.code)
