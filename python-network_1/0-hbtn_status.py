@@ -1,6 +1,7 @@
 #!/usr/bin/python3
+"""dlmfkmkv"""
+
 import urllib.request
-"""ldfrjiovgj"""
 
 if __name__ == "__main__":
     url = "https://intranet.hbtn.io/status"
