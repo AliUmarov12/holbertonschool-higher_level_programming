@@ -13,5 +13,3 @@ if __name__ == "__main__":
     except requests.error.HTTPError as g:
         if g.code >= 400:
             print("Error code:", g.code)
-        else:
-            pass
