@@ -10,5 +10,5 @@ if __name__ == "__main__":
     rq = urllib.request.Request(url, headers={'cfclearance': 'true'})
 
     with urllib.request.urlopen(rq) as f:
-        head=f.headers
+        head = f.headers
         print(head.get("X-Request-Id"))
