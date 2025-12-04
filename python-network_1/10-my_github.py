@@ -12,5 +12,5 @@ if __name__ == "__main__":
     try:
         abcd = abc.json()
         print(abcd.get("id"))
-    except:
+    except TypeError:
         print(None)
