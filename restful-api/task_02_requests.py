@@ -23,8 +23,8 @@ def fetch_and_save_posts():
         json_data = response.json()
         list_of_dicts = [
             {"id": post["id"]
-             "title": post["title"]
-             "body": post["body"]
+            "title": post["title"]
+            "body": post["body"]
              }
             for post in json_data
             ]
