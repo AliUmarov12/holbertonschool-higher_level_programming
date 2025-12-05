@@ -2,7 +2,7 @@ import http.server
 import socketserver
 import json
 
-class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
+class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
         # Root endpoint
@@ -11,17 +11,14 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             self.send_header("Content-Type", "text/plain")
             self.end_headers()
             self.wfile.write(b"Hello, this is a simple API!")
-        
-        # /data endpoint — JSON qaytarmalıdır
+
+        # /data endpoint – JSON cavab
         elif self.path == "/data":
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
-            data = {
-                "name": "John",
-                "age": 30,
-                "city": "New York"
-            }
+
+            data = {"name": "John", "age": 30, "city": "New York"}
             self.wfile.write(json.dumps(data).encode())
 
         # /status endpoint
@@ -31,16 +28,25 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(b"OK")
 
-        # Undefined endpoints → 404
+        # /info endpoint – əlavə məlumat
+        elif self.path == "/info":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+
+            info = {"version": "1.0", "description": "A simple API built with http.server"}
+            self.wfile.write(json.dumps(info).encode())
+
+        # Undefined endpoints
         else:
             self.send_response(404)
             self.send_header("Content-Type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"Not Found")
+            self.wfile.write(b"Endpoint not found")
 
-# Server start
+
 if __name__ == "__main__":
     PORT = 8000
-    with socketserver.TCPServer(("", PORT), SimpleHTTPRequestHandler) as httpd:
-        print(f"Serving at port {PORT}")
+    with socketserver.TCPServer(("", PORT), SimpleAPIHandler) as httpd:
+        print(f"Server running on port {PORT}")
         httpd.serve_forever()
