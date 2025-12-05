@@ -23,12 +23,12 @@ def fetch_and_save_posts():
         json_data = response.json()
         list_of_dicts = [
             {
-                "id": post["id"]
-                "title": post["title"]
+                "id": post["id"],
+                "title": post["title"],
                 "body": post["body"]
             }
             for post in json_data
-            ]
+        ]
         with open('posts.csv', 'w', newline='', encoding='utf-8') as csv_file:
             abc = csv.DictWriter(csv_file, fieldnames=["id", "title", "body"])
             abc.writeheader()
