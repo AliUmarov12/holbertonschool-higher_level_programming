@@ -10,7 +10,7 @@ def fetch_and_print_posts():
     response = requests.get(url)
     print("Status Code: {}".format(response.status_code))
 
-    if response.ok:
+    if response.status_code != 200:
         json_data = response.json()
 
         for i in json_data:
@@ -19,7 +19,7 @@ def fetch_and_print_posts():
 def fetch_and_save_posts():
     response = requests.get(url)
 
-    if response.ok:
+    if response.status_code != 200:
         json_data = response.json()
         list_of_dicts = [
             {
