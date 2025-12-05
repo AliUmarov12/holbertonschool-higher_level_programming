@@ -1,64 +1,46 @@
-#!/usr/bin/python3
 import http.server
+import socketserver
 import json
-from http.server import BaseHTTPRequestHandler, HTTPServer
 
-class SimpleAPI(BaseHTTPRequestHandler):
+class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
-        """Handle GET requests"""
-
-        # ============================
-        # 1) Root endpoint: "/"
-        # ============================
+        # Root endpoint
         if self.path == "/":
-            self.send_response(200)  # Status code = 200 OK
-            self.send_header("Content-type", "text/plain")
+            self.send_response(200)
+            self.send_header("Content-Type", "text/plain")
             self.end_headers()
             self.wfile.write(b"Hello, this is a simple API!")
-            return
-
-        # ============================
-        # 2) /data → return JSON data
-        # ============================
-        if self.path == "/data":
+        
+        # /data endpoint — JSON qaytarmalıdır
+        elif self.path == "/data":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
             data = {
                 "name": "John",
                 "age": 30,
                 "city": "New York"
             }
-            json_data = json.dumps(data)
+            self.wfile.write(json.dumps(data).encode())
 
+        # /status endpoint
+        elif self.path == "/status":
             self.send_response(200)
-            self.send_header("Content-type", "application/json")
-            self.end_headers()
-            self.wfile.write(json_data.encode())
-            return
-
-        # ============================
-        # 3) /status → return API status
-        # ============================
-        if self.path == "/status":
-            self.send_response(200)
-            self.send_header("Content-type", "text/plain")
+            self.send_header("Content-Type", "text/plain")
             self.end_headers()
             self.wfile.write(b"OK")
-            return
 
-        # ============================
-        # 4) Undefined endpoint → 404
-        # ============================
-        self.send_response(404)
-        self.send_header("Content-type", "text/plain")
-        self.end_headers()
-        self.wfile.write(b"404 Not Found: This endpoint does not exist")
+        # Undefined endpoints → 404
+        else:
+            self.send_response(404)
+            self.send_header("Content-Type", "text/plain")
+            self.end_headers()
+            self.wfile.write(b"Not Found")
 
-
-# ============================
-# Running the HTTP server
-# ============================
+# Server start
 if __name__ == "__main__":
-    port = 8000
-    server = HTTPServer(("localhost", port), SimpleAPI)
-    print(f"Server running on http://localhost:{port}")
-    server.serve_forever()
+    PORT = 8000
+    with socketserver.TCPServer(("", PORT), SimpleHTTPRequestHandler) as httpd:
+        print(f"Serving at port {PORT}")
+        httpd.serve_forever()
