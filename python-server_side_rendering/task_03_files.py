@@ -5,9 +5,6 @@ import sqlite3
 
 app = Flask(__name__)
 
-# -------------------------
-# JSON oxuma funksiyası
-# -------------------------
 def read_json_file(filename):
     try:
         with open(filename) as f:
