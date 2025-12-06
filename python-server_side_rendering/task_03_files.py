@@ -4,7 +4,7 @@ import csv
 
 app = Flask(__name__)
 
-# --- JSON oxuma funksiyası ---
+
 def read_json_file(filename):
     try:
         with open(filename) as f:
@@ -12,14 +12,13 @@ def read_json_file(filename):
     except Exception as e:
         return []
 
-# --- CSV oxuma funksiyası ---
+
 def read_csv_file(filename):
     products = []
     try:
         with open(filename, newline='') as f:
             reader = csv.DictReader(f)
             for row in reader:
-                # CSV-də id və price string olaraq gəlir, onları uyğun tiplərə çeviririk
                 products.append({
                     "id": int(row["id"]),
                     "name": row["name"],
@@ -37,11 +36,13 @@ def products():
 
     products_data = []
 
-    # Mənbəyə görə faylı oxu
+    # Mənbəyə görə data oxu
     if source == "json":
         products_data = read_json_file("products.json")
     elif source == "csv":
         products_data = read_csv_file("products.csv")
+    elif source == "sql":
+        products_data = read_sqlite_db("products.db")
     else:
         return render_template("product_display.html", error="Wrong source", products=None)
 
@@ -53,6 +54,7 @@ def products():
         products_data = filtered
 
     return render_template("product_display.html", products=products_data, error=None)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
